@@ -26,14 +26,14 @@ esphome:
     version: "${project_version}"
 
 dashboard_import:
-  package_import_url: github://klaasnicolaas/home-assistant-glow/home-assistant-glow/esp8266.yaml@main
+  package_import_url: github://sumizome0213/home-assistant-glow/home-assistant-glow/esp8266.yaml@main
 
 esp8266:
   board: esp01_1m
 
 packages:
   remote_package:
-    url: https://github.com/klaasnicolaas/home-assistant-glow/
+    url: https://github.com/sumizome0213/home-assistant-glow/
     ref: main
     files:
       - components/basis.yaml
