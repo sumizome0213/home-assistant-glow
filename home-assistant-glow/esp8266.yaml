@@ -42,6 +42,7 @@ packages:
 
 # Enable logging
 logger:
+  level: INFO
 
 # Allow OTA updates
 ota:
