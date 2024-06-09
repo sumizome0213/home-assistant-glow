@@ -34,7 +34,7 @@ jobs:
       matrix: ${{ steps.prepare-matrix.outputs.matrix }}
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.1.6
       - name: ⤵️ Get changed files
         id: changes
         uses: masesgroup/retrieve-changed-files@v3
@@ -87,7 +87,7 @@ jobs:
       matrix: ${{fromJson(needs.prepare.outputs.matrix)}}
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.1.6
       - name: 🔨 Build firmware
         uses: esphome/build-action@v2.0.0
         id: esphome-build
@@ -104,7 +104,7 @@ jobs:
         run: |
           sed -i 's/${{ steps.esphome-build.outputs.name }}\//\/${{ matrix.firmware }}\/${{ matrix.device }}\//g' output/${{ matrix.device }}/manifest.json
       - name: ⬆️ Upload firmware / device artifact
-        uses: actions/upload-artifact@v4.3.2
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: ${{ matrix.firmware}}-${{ matrix.device }}
           path: output
@@ -122,7 +122,7 @@ jobs:
             name: Home Assistant Glow
     steps:
       - name: ⤵️ Download specific artifacts
-        uses: actions/download-artifact@v4.1.5
+        uses: actions/download-artifact@v4.1.7
         with:
           pattern: ${{ matrix.project }}-*
           merge-multiple: true
@@ -134,7 +134,7 @@ jobs:
       - name: 🧪 Display structure of job
         run: ls -R
       - name: ⬆️ Upload project artifact
-        uses: actions/upload-artifact@v4.3.2
+        uses: actions/upload-artifact@v4.3.3
         with:
           name: ${{ matrix.project }}
           path: project-build
@@ -146,9 +146,9 @@ jobs:
     needs: combined-manifests
     steps:
       - name: ⤵️ Check out code from GitHub
-        uses: actions/checkout@v4.1.1
+        uses: actions/checkout@v4.1.6
       - name: ⬇️ Download all artifacts
-        uses: actions/download-artifact@v4.1.5
+        uses: actions/download-artifact@v4.1.7
         with:
           path: repository
       - name: 🗂️ Move firmware folders to static
